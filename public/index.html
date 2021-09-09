@@ -38,36 +38,42 @@
 			</button>
     </nav>
 		
-		<header>
-			<div>
-					<img src="/images/profile-hex.png"> 
-			</div>
-			<br>
-			<div>
-					<h2>Ninja Hatori</h2>
-			</div>
-	</header>
-	
-    <!-- Page-specific (main) content here -->
-    <main class="container">
+		<div id="responsive--container">
 			
-			<section class="new-tweet">
-				<h2>Compose Tweet</h2>
-				<form action="/tweets" method="POST">
-					<label for="tweet-text">What are you humming about?</label>
-					<textarea name="text" id="tweet-text"></textarea>
-					<div>
-						<button type="submit">Tweet</button>
-						<output name="counter" class="counter" for="tweet-text">140</output>
-					</div>
-				</form>
-				<!-- errors are rendered after the form -->
-			</section>
+			<!-- header area for the app -->
+			<header>
+				<div>
+						<img src="/images/profile-hex.png"> 
+				</div>
+				<br>
+				<div>
+						<h2>Ninja Hatori</h2>
+				</div>
+			</header>
+		
+	    <!-- Page-specific (main) content here -->
+	    <main class="container">
+				<section class="new-tweet">
+					<h2>Compose Tweet</h2>
+					<form action="/tweets" method="POST">
+						<label for="tweet-text">What are you humming about?</label>
+						<textarea name="text" id="tweet-text"></textarea>
+						<div>
+							<button type="submit">Tweet</button>
+							<output name="counter" class="counter" for="tweet-text">140</output>
+						</div>
+					</form>
+					<!-- errors are rendered after the form -->
+				</section>
+				<section id="tweets-container">
+					<!-- tweets will be loaded here -->
+				</section>
+				<!-- go to top button -->
+				<button id="topUp">
+					<i class="fas fa-angle-double-up"></i>
+				</button>
+			</main>
 
-			<section id="tweets-container">
-				<!-- tweets will be loaded here -->
-			</section>
-			<button id="topUp"><i class="fas fa-angle-double-up"></i></button>
-		</main>
+	</div>
   </body>
 </html>

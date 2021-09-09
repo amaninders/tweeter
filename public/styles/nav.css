@@ -1,0 +1,34 @@
+nav {
+	width: 100vw;
+	height: 120px;
+	display: flex;
+	align-items:center;
+	justify-content: space-between;
+	padding: 0em 1.5em 0 1.5rem;
+	background-color: #4056A1;
+	color: white;
+}
+
+nav > span {
+	font-family: 'Bungee', cursive;
+	margin: 10px;
+	align-items: flex-end;
+}
+
+nav > button {
+	background-color: transparent;
+	border: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#rightLink {
+	flex: 1;
+	margin-bottom: 0em;
+}
+
+.fa-angle-double-down {
+	color: red
+}

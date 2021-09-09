@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#tweet-text').on('keyup change paste', function(){
+  $('#tweet-text').on('focus blur keyup change paste', function(){
 
 		let tweetText = $(this).val();
     let tweetLength = tweetText.length;

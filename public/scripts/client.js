@@ -103,7 +103,7 @@ $(function() {
 
 	//render topUp button
 	$(this).scroll(() => {
-		$(window).scrollTop() > 600 ? $topUp.show() : $topUp.hide()
+		$(this).scrollTop() > 600 ? $topUp.show() : $topUp.hide()
 	})
 
 	//go back to the top of the page
@@ -139,6 +139,7 @@ $(function() {
 		// post data to route
 		$.post( "/tweets", $postData, function() {
 			$tweet.val(''); //clear the tweet form
+			$tweet.blur(); //this will reset the counter after submit
 			loadTweets(); //refetch tweets 
 		});
 	});

@@ -9,24 +9,25 @@
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
-
-		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
-
+		
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-		<link rel="stylesheet" href="/styles/nav.css" type="text/css">
-		<link rel="stylesheet" href="/styles/header.css" type="text/css">
-		<link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
+		<link rel="stylesheet" href="/styles/nav.css">
+		<link rel="stylesheet" href="/styles/header.css">
+		<link rel="stylesheet" href="/styles/new-tweet.css">
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.7/jquery.timeago.min.js" integrity="sha512-RlGrSmkje9EE/FXpJKWf0fvOlg4UULy/blvNsviBX9LFwMj/uewXVoanRbxTIRDXy/0A3fBQppTmJ/qOboJzmA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
+	
 
   <body>
     <!-- Top nav bar (fixed) -->
@@ -37,7 +38,7 @@
 				<i class="fas fa-angle-double-down"></i>
 			</button>
     </nav>
-
+		
 		<header>
 			<div>
 					<img src="/images/profile-hex.png"> 
@@ -46,23 +47,28 @@
 			<div>
 					<h2>Ninja Hatori</h2>
 			</div>
-		</header>
-		
-	    <!-- Page-specific (main) content here -->
+	</header>
+	
+    <!-- Page-specific (main) content here -->
     <main class="container">
-			<main class="container">
 			
-				<section class="new-tweet">
-					<h2>Compose Tweet</h2>
-					<form action="/tweets" method="POST">
-						<label for="tweet-text">What are you humming about?</label>
-						<textarea name="text" id="tweet-text"></textarea>
-						<div>
-							<button type="submit">Tweet</button>
-							<output name="counter" class="counter" for="tweet-text">140</output>
-						</div>
-					</form>
-				</section>
+			<section class="new-tweet">
+				<h2>Compose Tweet</h2>
+				<form action="/tweets" method="POST">
+					<label for="tweet-text">What are you humming about?</label>
+					<textarea name="text" id="tweet-text"></textarea>
+					<div>
+						<button type="submit">Tweet</button>
+						<output name="counter" class="counter" for="tweet-text">140</output>
+					</div>
+				</form>
+				<!-- errors are rendered after the form -->
+			</section>
+
+			<section id="tweets-container">
+				<!-- tweets will be loaded here -->
+			</section>
+			<button id="topUp"><i class="fas fa-angle-double-up"></i></button>
 		</main>
   </body>
 </html>

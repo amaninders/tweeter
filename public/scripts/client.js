@@ -139,7 +139,7 @@ $(function() {
 		// post data to route
 		$.post( "/tweets", $postData, function() {
 			$tweet.val(''); //clear the tweet form
-			$tweet.blur(); //this will reset the counter after submit
+			$tweet.blur(); //this will reset the counter after submit	
 			loadTweets(); //refetch tweets 
 		});
 	});

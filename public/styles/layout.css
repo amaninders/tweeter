@@ -34,3 +34,26 @@ nav > span {
 	position: relative;
 	top: 120px
 }
+
+main {
+	width: 90vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.tweet {
+	padding: 1rem;
+	border: solid 2px black;
+	margin: 2rem;
+}
+
+.tweet:hover {
+	box-shadow: 10px 10px rgb(173, 173, 173);
+}
+
+.tweetHandle {
+	font-weight: 600;
+	color: rgb(175, 175, 175);
+}

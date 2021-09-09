@@ -1,0 +1,40 @@
+.new-tweet {
+	display: none;
+	min-width: 100vw;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 2em;
+}
+
+section.new-tweet > form {
+	display: flex;
+	width: 90%;
+	flex-direction: column;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
+}
+
+section.new-tweet > form > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	font-family: 'Bungee', cursive;
+	margin-top: 1em;
+}
+
+button[type=submit] {
+	color: white;
+	background-color: #4056A1;
+}
+
+textarea[name="text"] {
+	background-color: transparent;
+	border: none;
+	border-bottom: solid 2px black;
+	line-height: 1em;
+}
+
+.visible {
+	display: flex;
+}

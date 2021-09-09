@@ -4,7 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
 //escape dangerous html to prevent xss
 const escape = function (str) {
   let div = document.createElement("div");
@@ -12,18 +11,18 @@ const escape = function (str) {
   return div.innerHTML;
 };
 
-//generate a single html element with all the tweets
-const renderTweets = function(tweets) {
-	let output = '';
-  for (const tweet of tweets) {
-		output += createTweetElement(tweet);
-	}
-	return output;
+//load tweets from db
+const loadTweets = () => {
+	$.ajax('/tweets', { method: 'GET' })
+	.then(function (tweets) {
+		$('#tweets-container').empty(); //clear the existing tweets
+		$('#tweets-container').append(renderTweets(tweets)); //append new tweets
+	});
 }
 
 //generate html for individual tweet
 const createTweetElement = (obj) => {
-	const output = `
+	const tweet = `
 	<article class="tweet">
 		<header>
 			<span><img src="${obj.user.avatars}" alt="">&nbsp;&nbsp;&nbsp;${obj.user.name}</span>
@@ -36,22 +35,21 @@ const createTweetElement = (obj) => {
 		</footer>
 	</article>
 `
-return output;
+return tweet;
 }
 
-//loadtweets from db
-const loadTweets = () => {
-	$.ajax('/tweets', { method: 'GET' })
-	.then(function (tweets) {
-		$('#tweets-container').empty(); //clear the existing tweets
-		$('#tweets-container').append(renderTweets(tweets)); //append new tweets
-	});
+// combine individual tweets into single element
+const renderTweets = function(tweets) {
+	let tweetList = '';
+  for (const tweet of tweets) {
+		tweetList += createTweetElement(tweet);
+	}
+	return tweetList;
 }
+
 
 const createError = (code) => {
-
-	// hashkey for common errors
-	// we can add more to this and reuse the same function
+	// hashmap for errors
 	const codeKey = {
 		'deadTweet' :  {
 			img : "/images/error2.gif",
@@ -63,8 +61,8 @@ const createError = (code) => {
 		}
 	}
 
-	//generate error html
-	const output = `
+	//generate error html based on code
+	const error = `
 	<div class="error--container">
 		<div class="error--msg">
 					<img src="${codeKey[code].img}" alt="error">
@@ -73,9 +71,12 @@ const createError = (code) => {
 		</div>
 	</div>	
 	`
+	return error;
+}
 
+const appendError = (errorCode) => {
 	// append error to the form
-	$form.after(output); 
+	$form.after(createError(errorCode)); 
 	$('.error--msg').css('display', 'flex').attr('id', 'overlay'); // make error visible
 	$('.error--msg > button.close-btn').on('click', () => { 
 		$('.error--container').remove(); //handle close action for error
@@ -83,7 +84,8 @@ const createError = (code) => {
 	return;
 }
 
-$( document ).ready(function() {
+
+$(function() {
 
 	// load tweets when document is ready
 	loadTweets(); 
@@ -97,7 +99,6 @@ $( document ).ready(function() {
 	//toggle form on click
 	$composeTweet.on('click', () => {
 		$('section.new-tweet').toggleClass('visible');
-
 	});
 
 	//render topUp button
@@ -105,14 +106,13 @@ $( document ).ready(function() {
 		$(window).scrollTop() > 600 ? $topUp.show() : $topUp.hide()
 	})
 
-
-	//move to top of the page
+	//go back to the top of the page
 	$('#topUp').on('click', () => {
-		window.scrollTo(0, 0);
+		window.scrollTo(0, 0); //back to top
 		if ( $tweetSection.css('display') !== 'flex') {
-			$('section.new-tweet').toggleClass('visible');
+			$('section.new-tweet').toggleClass('visible'); //show tweet textarea if hidden
 		}
-		$form.find('#tweet-text').focus();
+		$form.find('#tweet-text').focus(); //set cursor in the textarea
 	})
 
 	// post tweet on form submit
@@ -126,13 +126,13 @@ $( document ).ready(function() {
 
 		//return error if tweet is empty
 		if (!$tweetLength) {
-			createError('deadTweet')
+			appendError('deadTweet')
 			return;
 		}
 
 		// return error if tweet has more than 140 chars
 		if ($tweetLength > 140) {
-			createError('longTweet')
+			appendError('longTweet')
 			return;
 		}
 
@@ -142,5 +142,5 @@ $( document ).ready(function() {
 			loadTweets(); //refetch tweets 
 		});
 	});
-
+	
 });

@@ -23,7 +23,7 @@ const loadTweets = () => {
 //generate html for individual tweet
 const createTweetElement = (obj) => {
 	const tweet = `
-	<article class="tweet">
+	<article class="tweet full border">
 		<header>
 			<span><img src="${obj.user.avatars}" alt="">&nbsp;&nbsp;&nbsp;${obj.user.name}</span>
 			<span class="tweetHandle">${obj.user.handle}</span>
@@ -111,7 +111,7 @@ const scrollingActions = () => {
 	$(this).scrollTop() > 400 ? $topUp.show() : $topUp.hide();	
 	// change navbar bacground
 
-	if($(this).width() < 1024) {
+	if($(this).width() <=	 1024) {
 		return ($(this).scrollTop() > 342) ? changeNavColor('top'): changeNavColor('scrolled');
 	}	
 }

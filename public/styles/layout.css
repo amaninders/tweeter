@@ -17,7 +17,7 @@ html {
 
 body {
   color: #545149;
-  background-color: #f4f1ec;
+  background-color: #f0fff0;
   font-size: 24px;
 	font-family: 'Source Sans Pro', sans-serif;
 	display: flex;
@@ -90,6 +90,7 @@ main.container {
 	padding: 1rem;
 	border: solid 2px black;
 	margin: 2rem;
+	border-radius: 10px;
 }
 
 .tweet:hover {
@@ -123,11 +124,11 @@ main.container {
 }
 
 .tweet-actions {
-	color: #4056A1;
+	color: #f08080;
 }
 
 .tweet-actions i:hover {
-	color: rgb(200, 171, 9);
+	color: #9acd32;
 }
 
 /* error styles */
@@ -202,4 +203,14 @@ div.error--msg > button {
   background-color: gray;
 	color: #4056A1;
 	transform: rotate(360deg);
+}
+
+.full {
+  border-image: linear-gradient(45deg, turquoise, greenyellow) 1;
+}
+
+.border {
+  font-size: 1.6rem;
+  border: 8px solid linear-gradient(45deg, turquoise, greenyellow);
+  padding: 1rem;
 }

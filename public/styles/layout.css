@@ -40,25 +40,43 @@ nav > span {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- .responsive--container {
+ /* small screens */
+
+ /* #responsive--container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+} */
+
+#responsive--container {
+	min-width: 90%;
+	display: flex;
+	justify-content: space-around;
+	top: 120px;
+	position: relative;
 }
 
+@media only screen and (max-width: 1024px) {
+	#responsive--container {
+		flex-direction:column;
+		justify-content: center;
+		align-items: center;
+	}
+}
 
-.container {
+main.container {
+	flex: 4;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	position: relative;
 	top: 120px
 }
 
-
-main {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+#tweet-container {
+	min-width: 85%;
 }
 
 .tweet {
@@ -76,22 +94,22 @@ main {
 	color: rgb(175, 175, 175);
 }
 
-article.tweet > header {
+.tweet > header {
 	display: flex;
 	justify-content: space-between;
 }
 
-article.tweet > header > span > img {
+.tweet > header > span > img {
 	height: 2rem;
 }
 
-article.tweet > p {
+.tweet > p {
 	padding: 1em;
 	border-bottom: solid 2px black;
 	font-weight: 600;
 }
 
-article.tweet > footer {
+.tweet > footer {
 	display: flex;
 	justify-content: space-between;
 	font-size: 16px;
@@ -104,6 +122,8 @@ article.tweet > footer {
 .tweet-actions i:hover {
 	color: rgb(200, 171, 9);
 }
+
+/* error styles */
 
 div.error--container {
 	top: 0px;
@@ -150,6 +170,9 @@ div.error--msg > button {
 	border-radius: 8px;
 	padding: 7px;
 }
+
+
+/* got to top buttton */
 
 #topUp {
   display: none;

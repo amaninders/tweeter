@@ -1,6 +1,6 @@
 .new-tweet {
 	display: none;
-	min-width: 100vw;
+	min-width: 85%;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -9,7 +9,7 @@
 
 section.new-tweet > form {
 	display: flex;
-	width: 90%;
+	width: 95%;
 	flex-direction: column;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 600;

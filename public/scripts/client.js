@@ -85,23 +85,41 @@ const appendError = (errorCode) => {
 	return;
 }
 
-// we use the following object for navbar color properties 
-const navbarColors = {
-	'top': {
-		'background-color' : '#cced91',	
-		'transition': '0.5s'
-	},
-	'scrolled': {
-		'background-color' : 'transparent',	
-		'transition': '0.5s'
+
+
+const changeNavColor = (state) => {
+	
+	// we use the following object for navbar color properties 
+	const navbarColors = {
+		'top': {
+			'background-color' : '#cced91',	
+			'transition': '0.5s'
+		},
+		'scrolled': {
+			'background-color' : 'transparent',	
+			'transition': '0.5s'
+		}
 	}
-}
+	
+	//function call to change the navbar colors
+	$('nav').css(navbarColors[state]);
+} 
+
 
 const scrollingActions = () => {		
 	// show topup button 
 	$(this).scrollTop() > 400 ? $topUp.show() : $topUp.hide();	
 	// change navbar bacground
-	($(this).width() <= 1024 && $(this).scrollTop() > 342) ? $('nav').css(navbarColors.top): $('nav').css(navbarColors.scrolled);
+
+	if($(this).width() < 1024) {
+		return ($(this).scrollTop() > 342) ? changeNavColor('top'): changeNavColor('scrolled');
+	}	
+}
+
+const handleResize = () => {
+		if ($(this).width() >= 1024) {
+			changeNavColor('top')
+		}
 }
 
 const topUpToForm = () => {
@@ -157,6 +175,12 @@ $(function() {
 	$(this).scroll(() => {
 		scrollingActions();
 	})
+
+	// handle resize event
+	$(window).resize(function() {
+		handleResize();
+	})
+
 
 	//go back to the top of the page
 	$('#topUp').on('click', () => {

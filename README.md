@@ -14,4 +14,16 @@ This repository is the starter code for the project: Students will fork and clon
 ## Dependencies
 
 - Express
-- Node 5.10.x or above
+- Node (5.10.x or above)
+- body-parser (1.15.2 or above)
+- Chance (1.0.2 or above)
+
+## Final Product
+
+!["Screenshot of the home page"](https://github.com/amaninders/tweeter/blob/main/public/docs/home-page.png?raw=true)
+
+!["Screenshot of the responsive layout"](https://github.com/amaninders/tweeter/blob/main/public/docs/responsive-layout.png?raw=true)
+
+!["Screenshot of the tweet form"](https://github.com/amaninders/tweeter/blob/main/public/docs/tweet-form.png?raw=true)
+
+!["Screenshot of the tweet character counter"](https://github.com/amaninders/tweeter/blob/main/public/docs/tweet-limit.png?raw=true)

@@ -74,6 +74,7 @@ const createError = (code) => {
 	return error;
 }
 
+// this function appends to the tweet container a list of tweets fetched above
 const appendError = (errorCode) => {
 	// append error to the form
 	$form.parents('main.container').after(createError(errorCode)); 
@@ -83,6 +84,57 @@ const appendError = (errorCode) => {
 	});
 	return;
 }
+
+// we use the following object for navbar color properties 
+const navbarColors = {
+	'top': {
+		'background-color' : '#cced91',	
+		'transition': '0.5s'
+	},
+	'scrolled': {
+		'background-color' : 'transparent',	
+		'transition': '0.5s'
+	}
+}
+
+const scrollingActions = () => {		
+	// show topup button 
+	$(this).scrollTop() > 400 ? $topUp.show() : $topUp.hide();	
+	// change navbar bacground
+	($(this).width() <= 1024 && $(this).scrollTop() > 342) ? $('nav').css(navbarColors.top): $('nav').css(navbarColors.scrolled);
+}
+
+const topUpToForm = () => {
+	$(this).scrollTop(0); //back to top
+	if ( $tweetSection.css('display') !== 'flex') {
+		$('section.new-tweet').toggleClass('visible'); //show tweet textarea if hidden
+	}
+	$form.find('#tweet-text').focus(); //set cursor in the textarea
+}
+
+
+const formSubmit = (length, data, tweet) => {
+
+	//return error if tweet is empty
+	if (!length) {
+		appendError('deadTweet')
+		return;
+	}
+
+	// return error if tweet has more than 140 chars
+	if (length > 140) {
+		appendError('longTweet')
+		return;
+	}
+
+	// post data to route
+	$.post( "/tweets", data, function() {
+		tweet.val(''); //clear the tweet form
+		tweet.blur(); //this will reset the counter after submit	
+		loadTweets(); //refetch tweets 
+	});
+}
+
 
 
 $(function() {
@@ -101,47 +153,26 @@ $(function() {
 		$('section.new-tweet').toggleClass('visible');
 	});
 
-	//render topUp button
+	//scroll actions	
 	$(this).scroll(() => {
-		$(this).scrollTop() > 600 ? $topUp.show() : $topUp.hide()
+		scrollingActions();
 	})
 
 	//go back to the top of the page
 	$('#topUp').on('click', () => {
-		window.scrollTo(0, 0); //back to top
-		if ( $tweetSection.css('display') !== 'flex') {
-			$('section.new-tweet').toggleClass('visible'); //show tweet textarea if hidden
-		}
-		$form.find('#tweet-text').focus(); //set cursor in the textarea
+		topUpToForm();
 	})
 
 	// post tweet on form submit
 	$form.submit(function( e ) {
-		
-		e.preventDefault(); //prevent default form submission
-		
+		e.preventDefault(); //prevent default form submission	
+
+		//initialize variables for formSubmission
 		$postData = $form.serialize();
 		$tweet = $form.find('#tweet-text');
 		$tweetLength = $tweet.val().length;
 
-		//return error if tweet is empty
-		if (!$tweetLength) {
-			appendError('deadTweet')
-			return;
-		}
-
-		// return error if tweet has more than 140 chars
-		if ($tweetLength > 140) {
-			appendError('longTweet')
-			return;
-		}
-
-		// post data to route
-		$.post( "/tweets", $postData, function() {
-			$tweet.val(''); //clear the tweet form
-			$tweet.blur(); //this will reset the counter after submit	
-			loadTweets(); //refetch tweets 
-		});
+		formSubmit ($tweetLength, $postData, $tweet);
 	});
 	
 });

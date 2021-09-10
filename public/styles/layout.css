@@ -17,7 +17,7 @@ html {
 
 body {
   color: #545149;
-  background-color: #f0fff0;
+  background-color: #fff8dc;
   font-size: 24px;
 	font-family: 'Source Sans Pro', sans-serif;
 	display: flex;
@@ -40,14 +40,6 @@ nav > span {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- /* small screens */
-
- /* #responsive--container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-} */
 
 #responsive--container {
 	min-width: 90%;
@@ -82,15 +74,17 @@ main.container {
 	}
 }
 
-#tweet-container {
+#tweets-container {
 	min-width: 85%;
+	display: flex;
+	flex-direction: column-reverse;
 }
 
 .tweet {
 	padding: 1rem;
-	border: solid 2px black;
+	border: 2px solid black;
 	margin: 2rem;
-	border-radius: 10px;
+	border-image: linear-gradient(45deg, turquoise, greenyellow) 1;
 }
 
 .tweet:hover {
@@ -113,7 +107,7 @@ main.container {
 
 .tweet > p {
 	padding: 1em;
-	border-bottom: solid 2px black;
+	border-bottom: 2px solid black;
 	font-weight: 600;
 }
 
@@ -168,7 +162,7 @@ div.error--msg {
 	background-color: white;
 	padding: 2rem;
 	border-radius: 25px;
-	border: solid 3px #e4dede;
+	border: 3px solid #e4dede;
 	font-family: 'Source Sans Pro';
 	font-weight: 600;
 }
@@ -191,8 +185,8 @@ div.error--msg > button {
   font-size: 18px;
   border: none;
   outline: none;
-  background-color: #4056A1;
-  color: white;
+  background-color: #f08080;
+  color: black;
   cursor: pointer;
   padding: 25px 30px;
   border-radius: 50px;
@@ -200,17 +194,7 @@ div.error--msg > button {
 }
 
 #topUp:hover {
-  background-color: gray;
-	color: #4056A1;
+  background-color: #cced91;
+	color: black;
 	transform: rotate(360deg);
-}
-
-.full {
-  border-image: linear-gradient(45deg, turquoise, greenyellow) 1;
-}
-
-.border {
-  font-size: 1.6rem;
-  border: 8px solid linear-gradient(45deg, turquoise, greenyellow);
-  padding: 1rem;
 }

@@ -23,7 +23,7 @@ const loadTweets = () => {
 //generate html for individual tweet
 const createTweetElement = (obj) => {
 	const tweet = `
-	<article class="tweet full border">
+	<article class="tweet">
 		<header>
 			<span><img src="${obj.user.avatars}" alt="">&nbsp;&nbsp;&nbsp;${obj.user.name}</span>
 			<span class="tweetHandle">${obj.user.handle}</span>

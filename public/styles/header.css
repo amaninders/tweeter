@@ -17,7 +17,12 @@
 	justify-content: center;
 }
 
-/* width: 100vw; */
+
+@media only screen and (max-width: 1024px) {
+	#responsive--container > header {
+		width: 100vw;
+	}
+}
 
 #username {
 	margin: 5px 4px;

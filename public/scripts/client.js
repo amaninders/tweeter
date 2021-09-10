@@ -76,7 +76,7 @@ const createError = (code) => {
 
 const appendError = (errorCode) => {
 	// append error to the form
-	$form.after(createError(errorCode)); 
+	$form.parents('main.container').after(createError(errorCode)); 
 	$('.error--msg').css('display', 'flex').attr('id', 'overlay'); // make error visible
 	$('.error--msg > button.close-btn').on('click', () => { 
 		$('.error--container').remove(); //handle close action for error

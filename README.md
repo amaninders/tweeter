@@ -20,6 +20,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
+!["Overview"](https://github.com/amaninders/tweeter/blob/main/public/docs/overview.gif?raw=true)
+
 !["Screenshot of the home page"](https://github.com/amaninders/tweeter/blob/main/public/docs/home-page.png?raw=true)
 
 !["Screenshot of the responsive layout"](https://github.com/amaninders/tweeter/blob/main/public/docs/responsive-layout.png?raw=true)
